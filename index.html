@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>추석 잔소리 총알 피하기</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+    <style>
+      #container {
+        display: flex;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      #img_wrap {
+        width: 400px;
+        height: 400px;
+        flex-shrink: 0;
+      }
+
+      #ruppy_img {
+        /* position: absolute;
+        top: 0;
+        left: 0; */
+
+        height: 400px;
+      }
+      #nagging {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: rgb(0, 0, 0);
+        font-size: 30px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>🔫추석 잔소리 총알 피하기</h1>
+    <!-- 게임 영역이 그려질 영역입니다. -->
+    <div id="container">
+      <div id="img_wrap">
+        <p id="nagging">이거 다 너 잘돼라고 하는 소린거 알지?</p>
+        <img id="ruppy_img" src="assets/ruppy_0.png" />
+      </div>
+      <div id="game"></div>
+    </div>
+  </body>
+
+  <script src="game.js"></script>
+  <script>
+    const image = document.getElementById("ruppy_img");
+    // 2초마다 0에서 5사이 랜덤한 숫자를 생성합니다.
+    setInterval(() => {
+      const random = Math.floor(Math.random() * 5 + 1);
+      image.src = `assets/ruppy_${random}.jpeg`;
+    }, 2000);
+
+    const naggingArray = [
+      "대학은 어디갈거니?",
+      "취업은 어떻게 할거니?",
+      "연애는 언제 할거니?",
+      "시험공부는 잘 되고?",
+      "회사가 어디니?",
+      "연봉은 어떻게 되니?",
+      "결혼은 언제 할거니?",
+      "아이는 언제 낳을거니?",
+      "집은 어디에 사니?",
+      "대기업 가야지, 계속 다닐거야?",
+      "이거 다 너 잘돼라고 하는 소린거 알지?",
+      "살이 좀 쪘네, 다이어트 해야겠다.",
+      "만나는 사람은 있니?",
+    ];
+    const naggingElement = document.getElementById("nagging");
+    setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * naggingArray.length);
+      naggingElement.innerText = naggingArray[randomIndex];
+    }, 2000);
+  </script>
+</html>
